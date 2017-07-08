@@ -19,7 +19,9 @@ import javax.servlet.http.HttpSession;
 	public class Servletcontroller extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
 	 double c;
+	 int z;
 
 
 	@Override
@@ -33,11 +35,28 @@ import javax.servlet.http.HttpSession;
 		// set the values with set parameter into variable a, b
 		
 		// get parameter operation 
+		String x=req.getParameter("a");
+		String y=req.getParameter("b");
+		int c=Integer.parseInt(x);
+		int d=Integer.parseInt(y);
+		String op=req.getParameter("operation");
 		
-	//	switch (operation)		
+		
+	switch(op)		
 		{
+	case "Add": z=c+d;
+				
+				break;
+	case "Subtract": z=c-d;
+					  	break;
+	case "Divide": z=c/d;
+						break;
+	case "Multiply": z=c*d;
+				
+					break;
 		//write switch cases for calling different method of operations
 		}
+	req.setAttribute("answer",z);
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 		rd.forward(req, resp); 
 		} 
